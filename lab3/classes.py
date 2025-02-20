@@ -63,6 +63,7 @@ class Point:
     
     def dist(self, other_point):
         return math.sqrt((other_point.x - self.x) ** 2 + (other_point.y - self.y) ** 2)
+    #Вычисляет евклид дистанцию между двумя точками
 
 point1 = Point(2, 3)
 point2 = Point(5, 7)

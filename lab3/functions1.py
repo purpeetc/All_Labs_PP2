@@ -1,17 +1,16 @@
 #1 function grams to ounces
 def grams_to_ounces(grams):
-    return grams * 28.34952
+    return grams * 28.3495231
 
-a = int(input("Введите вес в граммах: "))
-print(f"Вес в унциях: {grams_to_ounces(a)}")
-
+grams_input = float(input("Введите вес в граммах: "))
+print("Вес в унциях:", grams_to_ounces(grams_input))
 
 #2 function Farenheit temperature
-def farenheit_to_celsius(farenheit):
-    return (farenheit - 32) * 5 / 9
+def fahrenheit_to_celsius(fahrenheit):
+    return (fahrenheit - 32) * 5 / 9
 
-a = int(input("Введите температуру в Фаренгейтах: "))
-print(f"Температура в Цельсиях: {farenheit_to_celsius(a)}")
+fahrenheit_input = float(input("Введите температуру в Фаренгейтах: "))
+print("Температура в Цельсиях:", fahrenheit_to_celsius(fahrenheit_input))
 
 
 #3 function Classic Puzzle
@@ -34,10 +33,22 @@ count_chicken_rabbit(a, b)
 
 
 #4 function Prime Numbers
-def prime(numbers):
-    return [x for x in numbers if all(x % i != 0 for i in range(2, int(x**0.5) + 1))]
-numbers = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1000000, 124, 123, 23, 1000001]
-print(f"Простые числа: {prime(numbers)}")
+def filter_prime(numbers):
+    primes = []
+    for x in numbers:
+        if x > 1:
+            is_prime = True
+            for i in range(2, x):
+                if x % i == 0:
+                    is_prime = False
+                    break
+            if is_prime:
+                primes.append(x)
+    return primes
+
+nums_input = input("Введите числа через пробел: ").split()
+nums_list = [int(num) for num in nums_input]
+print("Простые числа:", filter_prime(nums_list))
 
 
 #5 function permutation of string
@@ -116,14 +127,10 @@ print(f"{palindrome(s)}")
 #12 function histogram
 def histogram(items):
     for n in items:
-        output = ""
-        times = n
-        while times > 0:
-            output += "*"
-            times -= 1
-        print(output)
-
-histogram([4, 9, 7])
+        print('*' * n)
+hist_input = input("Введите числа для гистограммы через пробел: ").split()
+hist_numbers = [int(num) for num in hist_input]
+histogram(hist_numbers)
 
 
 #13 function Guess the Number
