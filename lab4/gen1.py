@@ -1,6 +1,7 @@
-def squares(n):
-  for i in range(1, n + 1):
-    print(i * i)
+def num(n):
+    for i in range(1,1+n):
+        yield i**2
 
-num = int(input("Enter number: "))
-squares(num)
+a=int(input("ksdhcbkshd: "))
+for i in num(a):
+    print(i)
