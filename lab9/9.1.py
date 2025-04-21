@@ -46,7 +46,6 @@ running = True
 while running:
     screen.fill(WHITE)  # Заполнение фона белым цветом
     
-    # Обработка событий (например, закрытие окна)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:  # Если пользователь нажал на кнопку закрытия окна
             running = False
@@ -64,17 +63,17 @@ while running:
         enemy_x = random.randint(100, WIDTH - 100)  # Новая случайная позиция по оси X
     
     # Действия маленькой монеты
-    coin_y += coin_speed  # Движение монеты вниз
-    if coin_y > HEIGHT:  # Если монета ушла за нижнюю границу экрана
-        coin_y = -coin_height  # Сброс позиции монеты по оси Y
-        coin_x = random.randint(100, WIDTH - 100)  # Новая случайная позиция по оси X
-        coin_value = random.randint(1, 5)  # Новое случайное значение монеты
-    
+    coin_y += coin_speed  
+    if coin_y > HEIGHT:  
+        coin_y = -coin_height
+        coin_x = random.randint(100, WIDTH - 100)  
+        coin_value = random.randint(1, 5)  
+
     # Действия большой монеты
-    big_coin_y += big_coin_speed  # Движение большой монеты вниз
-    if big_coin_y > HEIGHT:  # Если большая монета ушла за нижнюю границу экрана
-        big_coin_y = -big_coin_height  # Сброс позиции большой монеты по оси Y
-        big_coin_x = random.randint(100, WIDTH - 100)  # Новая случайная позиция по оси X
+    big_coin_y += big_coin_speed  
+    if big_coin_y > HEIGHT:  
+        big_coin_y = -big_coin_height  
+        big_coin_x = random.randint(100, WIDTH - 100)  
     
     # Сбор маленькой монеты (проверка пересечения прямоугольников)
     if (car_x < coin_x + coin_width and car_x + car_width > coin_x and
@@ -83,13 +82,13 @@ while running:
         coin_y = -coin_height  # Сброс позиции монеты по оси Y
         coin_x = random.randint(100, WIDTH - 100)  # Новая случайная позиция по оси X
     
-    # Сбор большой монеты (проверка пересечения прямоугольников)
+    # Сбор большой монеты 
     if (car_x < big_coin_x + big_coin_width and car_x + car_width > big_coin_x and
             car_y < big_coin_y + big_coin_height and car_y + car_height > big_coin_y):
-        score += big_coin_value  # Добавление очков за сбор большой монеты
-        big_coin_y = -big_coin_height  # Сброс позиции большой монеты по оси Y
-        big_coin_x = random.randint(100, WIDTH - 100)  # Новая случайная позиция по оси X
-    
+        score += big_coin_value  
+        big_coin_y = -big_coin_height  
+        big_coin_x = random.randint(100, WIDTH - 100)  
+        
     # Если моя машина сталкивается с машиной противника, игра заканчивается
     if (car_x < enemy_x + enemy_width and car_x + car_width > enemy_x and
             car_y < enemy_y + enemy_height and car_y + car_height > enemy_y):

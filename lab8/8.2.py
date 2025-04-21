@@ -32,7 +32,7 @@ while running:
         if event.type == pygame.QUIT: # Егер экрандағы Х батырмасы басылса, код өз жұмысын тоқтатады. 
             running = False
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP and snake_dir != (0, CELL_SIZE):
+            if event.key == pygame.K_UP and snake_dir != (0, CELL_SIZE):#проверяются условия, чтобы змейка не могла развернуться на 180°
                 snake_dir = (0, -CELL_SIZE)
             if event.key == pygame.K_DOWN and snake_dir != (0, -CELL_SIZE):
                 snake_dir = (0, CELL_SIZE)
@@ -55,10 +55,10 @@ while running:
     if new_head == food:
         score += 1
         food = (random.randrange(0, WIDTH, CELL_SIZE), random.randrange(0, HEIGHT, CELL_SIZE))
-        if score % 4 == 0:
+        if score % 4 == 0: #каждые 4 уровня лвл и спид увличивается
             level += 1
-            speed += 2  # Жылдамдықты арттыру
-    else:
+            speed += 2  
+    else:# если не сьели то змейка движется без увеличения длины
         snake.pop()
     
     # Тамақты экранға шығару
@@ -70,9 +70,9 @@ while running:
     
     font = pygame.font.Font(None, 30)
     text = font.render(f"Score: {score}  Level: {level}", True, BLACK)
-    screen.blit(text, (10, 10))
+    screen.blit(text, (10, 10))#отображается счет и уровень в верхнем левом углу экрана.
     
     pygame.display.update() # Экранды жаңарту. 
-    clock.tick(speed) 
+    clock.tick(speed) # Ограничение частоты кадров в зависимости от текущей скорости
 
 pygame.quit() # Pygame операциясын аяқтау. 
